@@ -125,7 +125,7 @@ def convert(xml_list, xml_dir, json_file):
 
 if __name__ == '__main__':
     if len(sys.argv) <= 1:
-        print('3 auguments are need.')
+        print('3 auguments are needed.')
         print('Usage: python {0} ImageSets_DIR XML_DIR OUTPUT_DIR'.format(
             sys.argv[0]))
         exit(1)
