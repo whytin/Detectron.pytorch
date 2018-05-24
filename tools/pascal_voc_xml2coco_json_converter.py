@@ -1,11 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Mar 08 16:01:57 2018
-
-Convert VOC dataset into COCO dataset
-
-@author: wkoa
-"""
 import os
 import sys
 import json
@@ -193,7 +185,7 @@ class voc2coco:
         """
         Generate categories to ids map
         """
-        return dict(zip(self.classes, xrange(self.num_classes)))
+        return dict(zip(self.classes, range(self.num_classes)))
 
     def _get_all_indexs(self):
         """
