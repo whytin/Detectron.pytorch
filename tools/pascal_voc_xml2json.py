@@ -167,6 +167,10 @@ if __name__ == '__main__':
     image_sets_path = 'ImageSets/Main'
     anno_path = 'annotations'
     xml_path = 'Annotations'
+
+    if os.path.exists(anno_path):
+        os.makedirs(anno_path)
+
     for f in os.listdir(image_sets_path):
         if not f.endswith('.txt'):
             continue
