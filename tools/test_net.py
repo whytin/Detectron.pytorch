@@ -26,6 +26,10 @@ def parse_args():
         '--dataset',
         help='training dataset')
     parser.add_argument(
+        '--num_classes', dest='num_classes',
+        help='Number of classes in your custom dataset',
+        default=None, type=int)
+    parser.add_argument(
         '--cfg', dest='cfg_file', required=True,
         help='optional config file')
 
@@ -82,6 +86,9 @@ if __name__ == '__main__':
 
     cfg.VIS = args.vis
 
+    if args.dataset == "custom_dataset" and args.num_classes is None:
+        raise ValueError("Need number of classes in your custom dataset to run!")
+
     if args.cfg_file is not None:
         merge_cfg_from_file(args.cfg_file)
     if args.set_cfgs is not None:
@@ -96,6 +103,9 @@ if __name__ == '__main__':
     elif args.dataset == "voc2007":
         cfg.TEST.DATASETS = ('voc_2007_test',)
         cfg.MODEL.NUM_CLASSES = 21
+    elif args.dataset == "custom_dataset":
+        cfg.TEST.DATASETS = ('custom_data_test',)
+        cfg.MODEL.NUM_CLASSES = args.num_classes
     else:  # For subprocess call
         assert cfg.TEST.DATASETS, 'cfg.TEST.DATASETS shouldn\'t be empty'
     assert_and_infer_cfg()
