@@ -193,6 +193,12 @@ DATASETS = {
         ANN_FN:
             _DATA_DIR + '/coco/annotations/image_info_test2017.json'
     },
+    'voc_2007_train': {
+        IM_DIR:
+            _DATA_DIR + '/VOC2007/JPEGImages',
+        ANN_FN:
+            _DATA_DIR + '/VOC2007/annotations/train.json'
+    },
     'voc_2007_trainval': {
         IM_DIR:
             _DATA_DIR + '/VOC2007/JPEGImages',
@@ -205,6 +211,12 @@ DATASETS = {
         ANN_FN:
             _DATA_DIR + '/VOC2007/annotations/test.json'
     },
+    'voc_2012_train': {
+        IM_DIR:
+            _DATA_DIR + '/VOC2012/JPEGImages',
+        ANN_FN:
+            _DATA_DIR + '/VOC2012/annotations/train.json'
+    },
     'voc_2012_trainval': {
         IM_DIR:
             _DATA_DIR + '/VOC2012/JPEGImages',
@@ -212,6 +224,12 @@ DATASETS = {
             _DATA_DIR + '/VOC2012/annotations/trainval.json'
     },
     'custom_data_train': {
+        IM_DIR:
+            _DATA_DIR + '/CustomData/JPEGImages',
+        ANN_FN:
+            _DATA_DIR + '/CustomData/annotations/train.json'
+    },
+    'custom_data_trainval': {
         IM_DIR:
             _DATA_DIR + '/CustomData/JPEGImages',
         ANN_FN:
