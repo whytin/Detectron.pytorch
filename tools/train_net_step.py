@@ -46,6 +46,10 @@ def parse_args():
         '--dataset', dest='dataset', required=True,
         help='Dataset to use')
     parser.add_argument(
+        '--num_classes', dest='num_classes',
+        help='Number of classes in your custom dataset',
+        default=None, type=int)
+    parser.add_argument(
         '--cfg', dest='cfg_file', required=True,
         help='Config file for training (and optionally testing)')
     parser.add_argument(
@@ -150,6 +154,9 @@ def main():
     else:
         raise ValueError("Need Cuda device to run !")
 
+    if args.dataset == "custom_dataset" and args.num_classes is None:
+        raise ValueError("Need number of classes in your custom dataset to run!")
+
     if args.dataset == "coco2017":
         cfg.TRAIN.DATASETS = ('coco_2017_train',)
         cfg.MODEL.NUM_CLASSES = 81
@@ -159,6 +166,12 @@ def main():
     elif args.dataset == "voc2007":
         cfg.TRAIN.DATASETS = ('voc_2007_train',)
         cfg.MODEL.NUM_CLASSES = 21
+    elif args.dataset == "voc2012":
+        cfg.TRAIN.DATASETS = ('voc_2012_train',)
+        cfg.MODEL.NUM_CLASSES = 21
+    elif args.dataset == "custom_dataset":
+        cfg.TRAIN.DATASETS = ('custom_data_train',)
+        cfg.MODEL.NUM_CLASSES = args.num_classes
     else:
         raise ValueError("Unexpected args.dataset: {}".format(args.dataset))
 
