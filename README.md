@@ -150,9 +150,12 @@ mkdir data
   ```
   **NOTE:** The `annotations` folder requires you to have PASCAL VOC annotations in COCO json format, which is available for download [here](https://storage.googleapis.com/coco-dataset/external/PASCAL_VOC.zip). You can also convert the XML annotatinos files to JSON by running the following script,
   ```
-  python tools/pascal_voc_xml2json.py
+  python tools/pascal_voc_xml2coco_json_converter.py $VOCdevkitPATH $year
   ```
   (In order to succesfully run the script above, you need to update the full path to the respective folders in the script).
+  
+- **Custom Dataset**
+  Similar to above, create a directory named `CustomDataset` in the `data` folder and add symlinks to the `annotations` directory and `JPEGImages` as shown for Pascal Voc dataset.
 
 Recommend to put the images on a SSD for possible better training performance
 
@@ -224,7 +227,7 @@ Specify `—-use_tfboard` to log the losses on Tensorboard.
   - use `--dataset keypoints_coco2017` when training for keypoint-rcnn.
   - use `--dataset voc2007` when training for PASCAL VOC 2007.
   - use `--dataset voc2012` when training for PASCAL VOC 2012.
-  - use `--dataset custom_dataset --num_classes $NUM_CLASSES` when training for your custom dataset. Here, `$NUM_CLASSES` is the number of object classes + 1 (for background class) present in your custom dataset.
+  - use `--dataset custom_dataset --num_classes $NUM_CLASSES` when training for your custom dataset. Here, `$NUM_CLASSES` is the number of object classes **+ 1** (for background class) present in your custom dataset.
 
 ### The use of `--iter_size`
 As in Caffe, update network once (`optimizer.step()`) every `iter_size` iterations (forward + backward). This way to have a larger effective batch size for training. Notice that, step count is only increased after network update.
