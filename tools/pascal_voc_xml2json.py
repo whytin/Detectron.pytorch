@@ -1,3 +1,12 @@
+"""
+THis code is borrowed  from @gemfield, the original code can be found here:
+https://github.com/CivilNet/Gemfield/blob/master/src/python/pascal_voc_xml2json/pascal_voc_xml2json.py
+
+This code converts the XMLs annotations to JSON according to the various
+splits defined in the ImageSets/Main directory. You may need to provide
+absolute path to the relevant variables in the main function below.
+"""
+
 import xml.etree.ElementTree as ET
 import os
 import json
@@ -87,8 +96,8 @@ def parseXmlFiles(xml_path, file_list):
         root = tree.getroot()
         if root.tag != 'annotation':
             raise Exception(
-                'pascal voc xml root element should be annotation, rather than {}'.
-                format(root.tag))
+                'pascal voc xml root element should be annotation,\
+                rather than {}'.format(root.tag))
 
         # elem is <folder>, <filename>, <size>, <object>
         for elem in root:
@@ -131,7 +140,8 @@ def parseXmlFiles(xml_path, file_list):
                         raise Exception('xml structure broken at size tag.')
                     size[subelem.tag] = int(subelem.text)
 
-                # option is <xmin>, <ymin>, <xmax>, <ymax>, when subelem is <bndbox>
+                # option is <xmin>, <ymin>, <xmax>, <ymax>,
+                # when subelem is <bndbox>
                 for option in subelem:
                     if current_sub == 'bndbox':
                         if bndbox[option.tag] is not None:
@@ -160,7 +170,7 @@ def parseXmlFiles(xml_path, file_list):
                         object_name, current_image_id, current_category_id,
                         bbox))
                     addAnnoItem(object_name, current_image_id,
-                                       current_category_id, bbox)
+                                current_category_id, bbox)
 
 
 if __name__ == '__main__':
