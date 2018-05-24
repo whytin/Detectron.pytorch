@@ -115,21 +115,14 @@ class voc2coco:
                         ymin = 0
                     bbox = [xmin, xmax, ymin, ymax]
                     one_ann_msg = {
-                        "segmentation":
-                        self._bbox_to_mask(bbox),
-                        "area":
-                        self._bbox_area_computer(bbox),
-                        "iscrowd":
-                        0,
-                        "image_id":
-                        int(index),
+                        "segmentation": self._bbox_to_mask(bbox),
+                        "area": self._bbox_area_computer(bbox),
+                        "iscrowd": 0,
+                        "image_id": int(index),
                         "bbox": [xmin, ymin, xmax - xmin, ymax - ymin],
-                        "category_id":
-                        self.categories_to_ids_map[obj.find('name').text],
-                        "id":
-                        annotation_id,
-                        "ignore":
-                        0
+                        "category_id": self.categories_to_ids_map[obj.find('name').text],
+                        "id": annotation_id,
+                        "ignore": 0
                     }
                     annotation_msg.append(one_ann_msg)
                     annotation_id += 1
