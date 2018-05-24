@@ -115,7 +115,7 @@ mkdir data
       ├── train2014
       ├── train2017
       ├── val2014
-      ├──val2017
+      ├── val2017
       ├── ...
   ```
   Download coco mini annotations from [here](https://s3-us-west-2.amazonaws.com/detectron/coco/coco_annotations_minival.tgz).
@@ -126,8 +126,35 @@ mkdir data
    ```
    ln -s path/to/coco data/coco
    ```
+   
+- **PASCAL VOC 2007 + 12**
+  Please follow the instructions in [py-faster-rcnn](https://github.com/rbgirshick/py-faster-rcnn#beyond-the-demo-installation-for-training-and-testing-models) to prepare VOC datasets. Actually, you can refer to any others. After downloading the data, creat softlinks in the `data/VOC<year>` folder as folows,
+  ```
+  mkdir -p $DETECTRON/detectron/datasets/data/VOC<year>
+  ln -s /path/to/VOC<year>/JPEGImages $DETECTRON.PYTORCH/data/VOC<year>/JPEGImages
+  ln -s /path/to/VOC<year>/json/annotations $DETECTRON.PYTORCH/data/VOC<year>/annotations
+  ```
+  The directory structure of `JPEGImages` and `annotations` should be as follows,
+  ```
+  VOC<year>
+  ├── annotations
+  |   ├── train.json
+  │   ├── trainval.json
+  │   ├── test.json
+  │   ├── ...
+  |
+  └── JPEGImages
+      ├── <im-1-name>.jpg
+      ├── ...
+      ├── <im-N-name>.jpg
+  ```
+  **NOTE:** The `annotations` folder requires you to have PASCAL VOC annotations in COCO json format, which is available for download [here](https://storage.googleapis.com/coco-dataset/external/PASCAL_VOC.zip). You can also convert the XML annotatinos files to JSON by running the following script,
+  ```
+  python tools/pascal_voc_xml2json.py
+  ```
+  (In order to succesfully run the script above, you need to update the full path to the respective folders in the script).
 
-  Recommend to put the images on a SSD for possible better training performance
+Recommend to put the images on a SSD for possible better training performance
 
 ### Pretrained Model
 
@@ -193,7 +220,11 @@ Use `--bs` to overwrite the default batch size to a proper value that fits into 
 
 Specify `—-use_tfboard` to log the losses on Tensorboard.
 
-**NOTE**: use `--dataset keypoints_coco2017` when training for keypoint-rcnn.
+**NOTE**: 
+  - use `--dataset keypoints_coco2017` when training for keypoint-rcnn.
+  - use `--dataset voc2007` when training for PASCAL VOC 2007.
+  - use `--dataset voc2012` when training for PASCAL VOC 2012.
+  - use `--dataset custom_dataset --num_classes $NUM_CLASSES` when training for your custom dataset. Here, `$NUM_CLASSES` is the number of object classes + 1 (for background class) present in your custom dataset.
 
 ### The use of `--iter_size`
 As in Caffe, update network once (`optimizer.step()`) every `iter_size` iterations (forward + backward). This way to have a larger effective batch size for training. Notice that, step count is only increased after network update.
