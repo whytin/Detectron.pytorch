@@ -164,18 +164,22 @@ def parseXmlFiles(xml_path, file_list):
 
 
 if __name__ == '__main__':
+    """
+    Change the image_sets_path, anno_path and xml_path as per your
+    absolute path for this script to work.
+    """
+
+    global coco
+
     image_sets_path = 'ImageSets/Main'
     anno_path = 'annotations'
     xml_path = 'Annotations'
-
-    if os.path.exists(anno_path):
-        os.makedirs(anno_path)
 
     for f in os.listdir(image_sets_path):
         if not f.endswith('.txt'):
             continue
 
-        global coco = dict()
+        coco = dict()
         coco['images'] = []
         coco['type'] = 'instances'
         coco['annotations'] = []
