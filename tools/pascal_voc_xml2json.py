@@ -63,7 +63,7 @@ def addAnnoItem(object_name, image_id, category_id, bbox):
     annotation_item['category_id'] = category_id
     annotation_id += 1
     annotation_item['id'] = annotation_id
-    return annotation_item
+    coco['annotations'].append(annotation_item)
 
 
 def parseXmlFiles(xml_path, file_list):
@@ -159,7 +159,7 @@ def parseXmlFiles(xml_path, file_list):
                     print('add annotation with {},{},{},{}'.format(
                         object_name, current_image_id, current_category_id,
                         bbox))
-                    return addAnnoItem(object_name, current_image_id,
+                    addAnnoItem(object_name, current_image_id,
                                        current_category_id, bbox)
 
 
@@ -175,7 +175,7 @@ if __name__ == '__main__':
         if not f.endswith('.txt'):
             continue
 
-        coco = dict()
+        global coco = dict()
         coco['images'] = []
         coco['type'] = 'instances'
         coco['annotations'] = []
@@ -196,8 +196,7 @@ if __name__ == '__main__':
             for line in lines:
                 file_list.append(line.strip() + '.xml')
 
-        annotation_item = parseXmlFiles(xml_path, file_list)
-        coco['annotations'].append(annotation_item)
+        parseXmlFiles(xml_path, file_list)
 
         json_file = f.split('.')[0] + '.json'
         json_file_path = os.path.join(anno_path, json_file)
