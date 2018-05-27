@@ -130,9 +130,11 @@ mkdir data
 - **PASCAL VOC 2007 + 12**
   Please follow the instructions in [py-faster-rcnn](https://github.com/rbgirshick/py-faster-rcnn#beyond-the-demo-installation-for-training-and-testing-models) to prepare VOC datasets. Actually, you can refer to any others. After downloading the data, creat softlinks in the `data/VOC<year>` folder as folows,
   ```
+  VOCdevkitPATH=/path/to/voc_devkit
   mkdir -p $DETECTRON/detectron/datasets/data/VOC<year>
-  ln -s /path/to/VOC<year>/JPEGImages $DETECTRON.PYTORCH/data/VOC<year>/JPEGImages
-  ln -s /path/to/VOC<year>/json/annotations $DETECTRON.PYTORCH/data/VOC<year>/annotations
+  ln -s /${VOCdevkitPATH}/VOC<year>/JPEGImages $DETECTRON.PYTORCH/data/VOC<year>/JPEGImages
+  ln -s /${VOCdevkitPATH}/VOC<year>/json_annotations $DETECTRON.PYTORCH/data/VOC<year>/annotations
+  ln -s /${VOCdevkitPATH} $DETECTRON.PYTORCH/data/VOC<year>/VOCdevkit<year>
   ```
   The directory structure of `JPEGImages` and `annotations` should be as follows,
   ```
@@ -155,7 +157,7 @@ mkdir data
   (In order to succesfully run the script above, you need to update the full path to the respective folders in the script).
   
 - **Custom Dataset**
-  Similar to above, create a directory named `CustomDataset` in the `data` folder and add symlinks to the `annotations` directory and `JPEGImages` as shown for Pascal Voc dataset.
+  Similar to above, create a directory named `CustomDataset` in the `data` folder and add symlinks to the `annotations` directory and `JPEGImages` as shown for Pascal Voc dataset. You also need to link the custom dataset devkit to `CustomDataDevkit`.
 
 Recommend to put the images on a SSD for possible better training performance
 
