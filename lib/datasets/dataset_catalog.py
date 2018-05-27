@@ -199,7 +199,7 @@ DATASETS = {
         ANN_FN:
             _DATA_DIR + '/VOC2007/annotations/voc_2007_train.json',
         DEVKIT_DIR:
-            _DATA_DIR + '/VOC2007'
+            _DATA_DIR + '/VOC2007/VOCdevkit2007'
     },
     'voc_2007_trainval': {
         IM_DIR:
@@ -207,7 +207,7 @@ DATASETS = {
         ANN_FN:
             _DATA_DIR + '/VOC2007/annotations/voc_2007_trainval.json',
         DEVKIT_DIR:
-            _DATA_DIR + '/VOC2007'
+            _DATA_DIR + '/VOC2007/VOCdevkit2007'
     },
     'voc_2007_test': {
         IM_DIR:
@@ -215,7 +215,7 @@ DATASETS = {
         ANN_FN:
             _DATA_DIR + '/VOC2007/annotations/voc_2007_test.json',
         DEVKIT_DIR:
-            _DATA_DIR + '/VOC2007'
+            _DATA_DIR + '/VOC2007/VOCdevkit2007'
     },
     'voc_2012_train': {
         IM_DIR:
@@ -223,7 +223,7 @@ DATASETS = {
         ANN_FN:
             _DATA_DIR + '/VOC2012/annotations/train.json',
         DEVKIT_DIR:
-            _DATA_DIR + '/VOC2012'
+            _DATA_DIR + '/VOC2012/VOCdevkit2012'
     },
     'voc_2012_trainval': {
         IM_DIR:
@@ -231,7 +231,7 @@ DATASETS = {
         ANN_FN:
             _DATA_DIR + '/VOC2012/annotations/trainval.json',
         DEVKIT_DIR:
-            _DATA_DIR + '/VOC2012'
+            _DATA_DIR + '/VOC2012/VOCdevkit2012'
     },
     'custom_data_train': {
         IM_DIR:
@@ -239,7 +239,7 @@ DATASETS = {
         ANN_FN:
             _DATA_DIR + '/CustomData/annotations/train.json',
         DEVKIT_DIR:
-            _DATA_DIR + '/CustomData'
+            _DATA_DIR + '/CustomData/CustomDataDevkit'
     },
     'custom_data_trainval': {
         IM_DIR:
@@ -247,7 +247,7 @@ DATASETS = {
         ANN_FN:
             _DATA_DIR + '/CustomData/annotations/trainval.json',
         DEVKIT_DIR:
-            _DATA_DIR + '/CustomData'
+            _DATA_DIR + '/CustomData/CustomDataDevkit'
     },
     'custom_data_test': {
         IM_DIR:
@@ -255,6 +255,6 @@ DATASETS = {
         ANN_FN:
             _DATA_DIR + '/CustomData/annotations/test.json',
         DEVKIT_DIR:
-            _DATA_DIR + '/CustomData'
+            _DATA_DIR + '/CustomData/CustomDataDevkit'
     }
 }
