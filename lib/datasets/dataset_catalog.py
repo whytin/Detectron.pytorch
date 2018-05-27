@@ -197,13 +197,15 @@ DATASETS = {
         IM_DIR:
             _DATA_DIR + '/VOC2007/JPEGImages',
         ANN_FN:
-            _DATA_DIR + '/VOC2007/annotations/voc_2007_train.json'
+            _DATA_DIR + '/VOC2007/annotations/voc_2007_train.json',
+        DEVKIT_DIR:
+            _DATA_DIR + '/VOC2007'
     },
     'voc_2007_trainval': {
         IM_DIR:
             _DATA_DIR + '/VOC2007/JPEGImages',
         ANN_FN:
-            _DATA_DIR + '/VOC2007/annotations/voc_2007_trainval.json'
+            _DATA_DIR + '/VOC2007/annotations/voc_2007_trainval.json',
         DEVKIT_DIR:
             _DATA_DIR + '/VOC2007'
     },
@@ -211,7 +213,7 @@ DATASETS = {
         IM_DIR:
             _DATA_DIR + '/VOC2007/JPEGImages',
         ANN_FN:
-            _DATA_DIR + '/VOC2007/annotations/voc_2007_test.json'
+            _DATA_DIR + '/VOC2007/annotations/voc_2007_test.json',
         DEVKIT_DIR:
             _DATA_DIR + '/VOC2007'
     },
@@ -219,23 +221,23 @@ DATASETS = {
         IM_DIR:
             _DATA_DIR + '/VOC2012/JPEGImages',
         ANN_FN:
-            _DATA_DIR + '/VOC2012/annotations/train.json'
+            _DATA_DIR + '/VOC2012/annotations/train.json',
         DEVKIT_DIR:
-            _DATA_DIR + '/VOC2007'
+            _DATA_DIR + '/VOC2012'
     },
     'voc_2012_trainval': {
         IM_DIR:
             _DATA_DIR + '/VOC2012/JPEGImages',
         ANN_FN:
-            _DATA_DIR + '/VOC2012/annotations/trainval.json'
+            _DATA_DIR + '/VOC2012/annotations/trainval.json',
         DEVKIT_DIR:
-            _DATA_DIR + '/VOC2007'
+            _DATA_DIR + '/VOC2012'
     },
     'custom_data_train': {
         IM_DIR:
             _DATA_DIR + '/CustomData/JPEGImages',
         ANN_FN:
-            _DATA_DIR + '/CustomData/annotations/train.json'
+            _DATA_DIR + '/CustomData/annotations/train.json',
         DEVKIT_DIR:
             _DATA_DIR + '/CustomData'
     },
@@ -243,7 +245,7 @@ DATASETS = {
         IM_DIR:
             _DATA_DIR + '/CustomData/JPEGImages',
         ANN_FN:
-            _DATA_DIR + '/CustomData/annotations/trainval.json'
+            _DATA_DIR + '/CustomData/annotations/trainval.json',
         DEVKIT_DIR:
             _DATA_DIR + '/CustomData'
     },
@@ -251,8 +253,8 @@ DATASETS = {
         IM_DIR:
             _DATA_DIR + '/CustomData/JPEGImages',
         ANN_FN:
-            _DATA_DIR + '/CustomData/annotations/test.json'
+            _DATA_DIR + '/CustomData/annotations/test.json',
         DEVKIT_DIR:
-            _DATA_DIR + "/CustomData'
+            _DATA_DIR + '/CustomData'
     }
 }
