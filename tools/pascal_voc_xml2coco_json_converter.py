@@ -105,9 +105,9 @@ class voc2coco:
                     bndbox = obj.find('bndbox')
                     [xmin, xmax, ymin, ymax] = [
                         int(bndbox.find('xmin').text) - 1,
-                        int(bndbox.find('xmax').text),
+                        int(bndbox.find('xmax').text) - 1,
                         int(bndbox.find('ymin').text) - 1,
-                        int(bndbox.find('ymax').text)
+                        int(bndbox.find('ymax').text) -1
                     ]
                     if xmin < 0:
                         xmin = 0
