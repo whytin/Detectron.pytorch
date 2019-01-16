@@ -57,9 +57,9 @@ def get_extensions():
 
 
 setup(
-    name="faster_rcnn",
+    name="detectron_pytorch",
     version="0.1",
-    description="object detection in pytorch",
+    description="detectron in pytorch",
     packages=find_packages(exclude=("configs", "tests",)),
     # install_requires=requirements,
     ext_modules=get_extensions(),

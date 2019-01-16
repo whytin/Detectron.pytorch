@@ -8,9 +8,6 @@ import torch.nn.functional as F
 from torch.autograd import Variable
 
 from core.config import cfg
-# from model.roi_pooling.functions.roi_pool import RoIPoolFunction
-# from model.roi_crop.functions.roi_crop import RoICropFunction
-# from modeling.roi_xfrom.roi_align.functions.roi_align import RoIAlignFunction
 from model.roi_layers import ROIPool, ROIAlign
 import modeling.rpn_heads as rpn_heads
 import modeling.fast_rcnn_heads as fast_rcnn_heads
