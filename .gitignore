@@ -9,6 +9,8 @@ data/*
 notebooks/*.pkl
 
 /Outputs
+lib/build
+lib/faster_rcnn.egg-info
 
 # ------------------------------
 
