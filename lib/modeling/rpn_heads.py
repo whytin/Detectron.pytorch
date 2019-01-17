@@ -1,3 +1,4 @@
+import torch
 from torch import nn
 from torch.nn import init
 import torch.nn.functional as F
@@ -107,7 +108,7 @@ class single_scale_rpn_outputs(nn.Module):
                     rpn_cls_logits.view(B, 2, C // 2, H, W), dim=1)
                 rpn_cls_prob = rpn_cls_prob[:, 1].squeeze(dim=1)
             else:
-                rpn_cls_prob = F.sigmoid(rpn_cls_logits)
+                rpn_cls_prob = torch.sigmoid(rpn_cls_logits)
 
             rpn_rois, rpn_rois_prob = self.RPN_GenerateProposals(
                 rpn_cls_prob, rpn_bbox_pred, im_info)
@@ -150,7 +151,7 @@ def single_scale_rpn_losses(
     else:
         weight = (rpn_labels_int32 >= 0).float()
         loss_rpn_cls = F.binary_cross_entropy_with_logits(
-            rpn_cls_logits, rpn_labels_int32.float(), weight, size_average=False)
+            rpn_cls_logits, rpn_labels_int32.float(), weight, reduction='sum')
         loss_rpn_cls /= weight.sum()
 
     loss_rpn_bbox = net_utils.smooth_l1_loss(
