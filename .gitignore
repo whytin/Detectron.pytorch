@@ -10,7 +10,7 @@ notebooks/*.pkl
 
 /Outputs
 lib/build
-lib/faster_rcnn.egg-info
+lib/detectron_pytorch.egg-info
 
 # ------------------------------
 

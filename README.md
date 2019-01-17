@@ -18,7 +18,7 @@
 
 </div>
 
-**This code follows the implementation architecture of Detectron.** Only part of the functionality is supported. Check [this section](#supported-network-modules) for more information.
+**This code follows the implementation architecture of Detectron.** Only part of the functionality is supported. Check [this section](#supported-network-modules) for more information. This code now supports **PyTorch 1.0**
 
 With this code, you can...
 
@@ -35,7 +35,7 @@ This implementation has the following features:
 
 - **It supports multiple GPUs training**.
 
-- **It supports three pooling methods**. Notice that only **roi align** is revised to match the implementation in Caffe2. So, use it.
+- **It supports two pooling methods**. Notice that only **roi align** is revised to match the implementation in Caffe2. So, use it.
 
 - **It is memory efficient**. For data batching, there are two techiniques available to reduce memory usage: 1) *Aspect grouping*: group images with similar aspect ratio in a batch 2) *Aspect cropping*: crop images that are too long. Aspect grouping is implemented in Detectron, so it's used for default. Aspect cropping is the idea from [jwyang/faster-rcnn.pytorch](https://github.com/jwyang/faster-rcnn.pytorch), and it's not used for default.
 
@@ -46,6 +46,8 @@ This implementation has the following features:
 - (2018/05/25) Support ResNeXt backbones.
 - (2018/05/22) Add group normalization baselines.
 - (2018/05/15) PyTorch0.4 is supported now !
+- (2019/08/28) Support PASCAL VOC and Custom Dataset
+- (2019/01/17) **PyTorch 1.0 Supported now!**
 
 ## Getting Started
 Clone the repo:
@@ -59,9 +61,9 @@ git clone https://github.com/roytseng-tw/mask-rcnn.pytorch.git
 Tested under python3.
 
 - python packages
-  - pytorch>=0.3.1
+  - pytorch>=1.0.0
   - torchvision>=0.2.0
-  - cython
+  - cython>=0.29.2
   - matplotlib
   - numpy
   - scipy
@@ -82,9 +84,7 @@ cd lib  # please change to this directory
 sh make.sh
 ```
 
-If your are using Volta GPUs, uncomment this [line](https://github.com/roytseng-tw/mask-rcnn.pytorch/tree/master/lib/make.sh#L15) in `lib/mask.sh` and remember to postpend a backslash at the line above. `CUDA_PATH` defaults to `/usr/loca/cuda`. If you want to use a CUDA library on different path, change this [line](https://github.com/roytseng-tw/mask-rcnn.pytorch/tree/master/lib/make.sh#L3) accordingly.
-
-It will compile all the modules you need, including NMS, ROI_Pooing, ROI_Crop and ROI_Align. (Actually gpu nms is never used ...)
+It will compile all the modules you need, including NMS, ROI_Pooing and ROI_Align. (Actually gpu nms is never used ...)
 
 Note that, If you use `CUDA_VISIBLE_DEVICES` to set gpus, **make sure at least one gpu is visible when compile the code.**
 
