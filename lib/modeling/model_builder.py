@@ -276,7 +276,7 @@ class Generalized_RCNN(nn.Module):
                         # Warning!: Not check if implementation matches Detectron
                         xform_out = ROIPool((resolution, resolution), sc)(bl_in, rois)
                     elif method == 'RoIAlign':
-                        xform_out = RoIAlignFunction(
+                        xform_out = ROIAlign(
                             (resolution, resolution), sc, sampling_ratio)(bl_in, rois)
                     bl_out_list.append(xform_out)
 
