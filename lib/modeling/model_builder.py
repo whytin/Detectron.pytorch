@@ -8,7 +8,7 @@ import torch.nn.functional as F
 from torch.autograd import Variable
 
 from core.config import cfg
-from model.roi_layers import ROIPool, ROIAlign
+from torchvision.ops import RoIPool, RoIAlign
 import modeling.rpn_heads as rpn_heads
 import modeling.fast_rcnn_heads as fast_rcnn_heads
 import modeling.mask_rcnn_heads as mask_rcnn_heads
@@ -274,9 +274,9 @@ class Generalized_RCNN(nn.Module):
                     rois = Variable(torch.from_numpy(rpn_ret[bl_rois])).cuda(device_id)
                     if method == 'RoIPoolF':
                         # Warning!: Not check if implementation matches Detectron
-                        xform_out = ROIPool((resolution, resolution), sc)(bl_in, rois)
+                        xform_out = RoIPool((resolution, resolution), sc)(bl_in, rois)
                     elif method == 'RoIAlign':
-                        xform_out = ROIAlign(
+                        xform_out = RoIAlign(
                             (resolution, resolution), sc, sampling_ratio)(bl_in, rois)
                     bl_out_list.append(xform_out)
 
@@ -298,9 +298,9 @@ class Generalized_RCNN(nn.Module):
             device_id = blobs_in.get_device()
             rois = Variable(torch.from_numpy(rpn_ret[blob_rois])).cuda(device_id)
             if method == 'RoIPoolF':
-                xform_out = ROIPool((resolution, resolution), spatial_scale)(blobs_in, rois)
+                xform_out = RoIPool((resolution, resolution), spatial_scale)(blobs_in, rois)
             elif method == 'RoIAlign':
-                xform_out = ROIAlign(
+                xform_out = RoIAlign(
                     (resolution, resolution), spatial_scale, sampling_ratio)(blobs_in, rois)
 
         return xform_out
