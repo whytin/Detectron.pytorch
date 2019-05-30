@@ -18,7 +18,7 @@
 
 </div>
 
-**This code follows the implementation architecture of Detectron.** Only part of the functionality is supported. Check [this section](#supported-network-modules) for more information. This code now supports **PyTorch 1.0**
+**This code follows the implementation architecture of Detectron.** Only part of the functionality is supported. Check [this section](#supported-network-modules) for more information. This code now supports **PyTorch 1.0** and **TorchVision 0.3**.
 
 With this code, you can...
 
@@ -48,6 +48,7 @@ This implementation has the following features:
 - (2018/05/15) PyTorch0.4 is supported now !
 - (2019/08/28) Support PASCAL VOC and Custom Dataset
 - (2019/01/17) **PyTorch 1.0 Supported now!**
+- (2019/05/30) Code rebased on **TorchVision 0.3**. Compilation is now optional!
 
 ## Getting Started
 Clone the repo:
@@ -62,7 +63,7 @@ Tested under python3.
 
 - python packages
   - pytorch>=1.0.0
-  - torchvision>=0.2.0
+  - torchvision>=0.3.0
   - cython>=0.29.2
   - matplotlib
   - numpy
@@ -72,10 +73,10 @@ Tested under python3.
   - packaging
   - [pycocotools](https://github.com/cocodataset/cocoapi)  — for COCO dataset, also available from pip.
   - tensorboardX  — for logging the losses in Tensorboard
-- An NVIDAI GPU and CUDA 8.0 or higher. Some operations only have gpu implementation.
+- An NVIDIA GPU and CUDA 8.0 or higher. Some operations only have gpu implementation.
 - **NOTICE**: different versions of Pytorch package have different memory usages.
 
-### Compilation
+### Compilation [Optional]
 
 Compile the CUDA code:
 
@@ -84,7 +85,7 @@ cd lib  # please change to this directory
 sh make.sh
 ```
 
-It will compile all the modules you need, including NMS, ROI_Pooing and ROI_Align. (Actually gpu nms is never used ...)
+It will compile all the modules you need, including NMS. (Actually gpu nms is never used ...)
 
 Note that, If you use `CUDA_VISIBLE_DEVICES` to set gpus, **make sure at least one gpu is visible when compile the code.**
 
